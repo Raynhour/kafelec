@@ -1,0 +1,105 @@
+.card {
+    &-title {
+        padding: 5px 10px;
+        position: absolute;
+        bottom: 0;
+        font-size: $card-title;
+        right: 0;
+        left: 0;
+        background-color: rgba(17,17,17,.5);
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    &-box {
+        opacity: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        background-color: rgba(0,0,0,.8);
+        transition: all .5s ease;
+        &__wrapper {
+            margin-top: -15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            transition: all .5s ease;
+        }
+        & h2, p {
+            opacity:0;
+            padding: 0px 10px;
+            margin-top: -15px;
+            width:100%;
+            text-align: center;
+            color: #fff;
+            transition: all .5s ease;
+        }
+        & h2 {font-size: $card-title;}
+        & p { 
+            padding-top: 0px; 
+            font-size: $card-descr;
+            overflow: hidden;
+        }
+    }
+    &_small {
+        .card-title {
+            font-size: $card-title_small;
+            text-transform: unset;
+        }
+        .card-box{
+            & h2  {
+                font-size: $card-title_small
+            }
+            & p {
+                font-size: $card-descr_small
+            }
+        }
+    }
+    &:hover {
+        .card-box {
+            opacity: 1;
+            padding-top: 0px;
+            & h2, p {
+                opacity: 1;
+                margin-top: 0px;
+            }
+
+            &__wrapper {
+                margin-top: 0;
+            }
+        }
+        .card-title { opacity: 0}
+    }
+
+    &-block {
+        margin-top: 15px;
+        & p {
+            font-size: 18px;
+        }
+        &__img {
+            height: 100%;
+        }
+        & .title-main {
+            color: $primary;
+        }
+        & .v-card__title {
+            font-weight: bold;
+            color: $primary;
+            font-size: $card-title_small;
+        }
+    }
+
+    &-inner {
+        & .v-card__title {
+            font-size: calc(#{$card-title_small} - 5px);
+            color: inherit;
+        }
+    }
+}
