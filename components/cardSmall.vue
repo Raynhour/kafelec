@@ -1,5 +1,5 @@
 <template lang="pug">
-v-card(:to="{path: `news/${routeId}`}").card.card_small
+v-card(:to="`news/${routeId}`").card.card_small
     v-img(:height="height" :src="bgImg")
     h2.card-title {{ title }}
     div.card-box
@@ -13,7 +13,7 @@ v-card(:to="{path: `news/${routeId}`}").card.card_small
 export default {
     props: {
         routeId: {
-            type: Number,
+            type: [Number, String],
             default: null,
             required: true
         },

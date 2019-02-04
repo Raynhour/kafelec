@@ -2,76 +2,25 @@
 div
     v-container
         v-layout(row wrap)
-            v-flex(xs-12)
+            v-flex(xs-12 v-if="history")
+                h2.title-main.pt-5 {{ history.title }}
                 v-timeline
-                    v-timeline-item(large)
-                        span(slot="opposite") 1962 рік
+                    v-timeline-item(large v-for="step, i in history.addHistory" :key="i")
+                        span(slot="opposite") {{ step.year }}
                         v-card
-                            v-card-title.headline Створення кафедри
-                            v-card-text 
-                                p Кафедра була створена в 1962 році як загально-технічна кафедра теоретичних основ радіотехніки на факультеті радіотехніки. 
-                                p Завідувач кафедри - доктор техн. наук, професор
-                                    b.primary--text К. Круковський – Синевич 
-                                    | (1962 - 1976)
-                                p Подалі кафедру очолювали: кандидат техн. наук, доцент 
-                                    b.primary--text Р. Беляков 
-                                    | (1976 – 1979), доктор техн. наук, професор 
-                                    b.primary--text Р.Карташов 
-                                    | (1979 – 1985), кандидат техн. наук, доцент 
-                                    b.primary--text В. Іванов 
-                                    |(1985 – 1987).
-                    v-timeline-item(large)
-                        span(slot="opposite") 1987 рік
-                        v-card
-                            v-card-title.headline Реорганізація кафедри
-                            v-card-text
-                                p З 1987 після реорганізації кафедри теоретичних основ радіотехніки в кафедру радіоелектроніки, її понад 20 років очолював доктор техн. наук, професор 
-                                    b.primary--text А. Білецький.
-
-                    v-timeline-item(large)
-                        span(slot="opposite") 2000-2007 рік
-                        v-card
-                            v-card-title.headline Нові спеціальності
-                            v-card-text
-                                p У 2000 році кафедра стає випусковою за спеціальністю 091002 “Біотехнічні і медичні апарати і системи”. В 2004 році розпочато підготовку фахівців зі спеціальності 090803 “Електронні системи”і спеціальності 090804 “Фізична і біомедична електроніка“ . З 2007 року кафедра веде підготовку бакалаврів за двома напрямами підготовки: 050802 “Електронні пристрої та системи” та 050801 “Мікро- і наноелектроніка” , а також готує спеціалістів і магістрів за спеціальностями 09080102 “Фізична і біомедична електроніка“ і 09080202 “Електронні системи”.
-                    
-                    v-timeline-item(large)
-                        span(slot="opposite") 2008 - поточний час
-                        v-card
-                            v-card-title.headline Вступ в ННІАЕТ та нові освітні програми
-                            v-card-text
-                                p З 2008 року кафедру радіоелектроніки очолює доктор техн. наук, профессор 
-                                    b.primary--text Ф. Яновський.
-                                p Кафедра надає послуги в двух освітніх програмах 
-                                    b.primary--text 153. Мікро - і наносистемна техніка 
-                                    | і 
-                                    b.primary--text 171. Електроніка. 
-                                    | З 2013 стає частиною Навчально-наукового інституту аеронавігації, електроніки та телекомунікацій(ННІАЕТ).
-            v-flex(xs12)
+                            v-card-title.headline {{ step.title }}
+                            v-card-text(v-html="step.descr")
+                
+            v-flex(xs12 v-if="collaboration")
                 v-card.card-block
                     v-card-title.justify-center Міжнародне співробітництво
                     v-card-text
-                        v-tabs(color='primary' slider-color="yellow" dark fixed-tabs).app-tabs
-                            v-tab(ripple ).app-tabs__item Напрямки
-                            v-tab(ripple).app-tabs__item Проект EWENT
-                            v-tab(ripple).app-tabs__item Проект ACTIVE
-                            v-tab(ripple).app-tabs__item Зовнішня науково-методична діяльність
-                            
-                            v-tab-item
-                                p Міжнародні зв’язки кафедри радіоелектроніки з навчальними закладами та організаціями інших країн реалізуються за кількома напрямами.
-                                p По-перше, очевидний внесок у розвиток міжнародного співробітництва дає підготовка фахівців для зарубіжних країн – як бакалаврів, спеціалістів і магістрів, так і фахівців найвищого рівня через аспірантуру і докторантуру. Низка колишніх дипломників і аспірантів – вихованців професорів кафедри після завершення навчання і одержання дипломів та наукових ступенів продовжують контакти і співробітництво з кафедрою.
-                                p Іншим напрямком є міжвузівське співробітництво із зарубіжними вищими навчальними закладами– партнерами. У 2003 році був підписаний другий договір про співробітництво з Науково-дослідним центром радіолокації і телекомунікацій при Делфтському технічному університеті (Нідерланди), який діє по сьогодні. Крім того, підписаний і діє договір з Технічним університетом Гамбург-Харбург (Німеччина). У рамках цього договору протягом 2005-06 років в Гамбурзі проходив стажування аспірант Островський Я.П. У 2010 році підписаний договір про співробітництво з Варшавською Політехнікою, згідно з яким заплановано обмін студентами і викладачами з метою інтернаціоналізації навчання, зокрема англійською мовою, обмін досвідом і розробка спільного навчально-методичного забезпечення за спеціальностями кафедри.
-                            v-tab-item
-                                p Проект EWENT в рамках програми Еразмус Мундус, запропонований нами в 2011 році спільно з Варшавським політехнічним університетом та низкою інших університетів Європи, виграв грант і отримав фінансування Європейської Комісії на три роки з 2012 по 2015. Назва проекту EWENT означає East-West European Network on higher Technical education. Проект EWENT координує стипендіальну програму, яка фінансує «мобільність» студентів, які отримують можливість навчатися від 5 до 15 місяців в одному з університетів Західної і Центральної Європи.
-                            v-tab-item
-                                p
-                                    b ACTIVE = Atlantic Caucasus Technical universities Initiative for Valuable Education
-                                p Це новий виграний нами міжнародний проект за програмою Еразмус Мундус Action 2. Обмін за цим проектом почнеться у 2014/15 році й буде продовжуватися 3 роки. Робота розпочинається уже в 2013 році.
-                            v-tab-item 
-                                v-tab-item
-                                p
-                                    b ACTIVE = Atlantic Caucasus Technical universities Initiative for Valuable Education
-                                p Це новий виграний нами міжнародний проект за програмою Еразмус Мундус Action 2. Обмін за цим проектом почнеться у 2014/15 році й буде продовжуватися 3 роки. Робота розпочинається уже в 2013 році.
+                        v-expansion-panel
+                            v-expansion-panel-content(v-for="project ,i in collaboration.projects" :key="i")
+                                div(slot="header") {{ project.title }}
+                                v-card
+                                    v-card-text(v-html="project.descr")
+                        
             v-flex(xs12)
                 v-card.card-block
                     v-card-title.justify-center Наші партнери
@@ -108,11 +57,89 @@ div
                                 a(href="https://www.pw.edu.pl/engpw" target="_blank") Варшавська Політехніка
                             v-flex(xs4).pa-2
                                 a(href="" target="_blank") НДІ "БУРАН"
+
+            
+            v-flex(xs12)
+                h2.title-main Викладачі кафедри електроніки
+    v-container( grid-list-lg)
+        v-layout(row wrap)
+            v-flex(xs3 v-for="teacher in teachers" :key="teacher.id")
+                v-card(:to="`teachers/${teacher.id}`")
+                    v-img(:src="teacher.better_featured_image.source_url" height="300")
+                    v-card-title {{ teacher.title.rendered }}
+
+            v-flex(xs12).text-xs-center
+                v-btn(large :to="`teachers`" nuxt color="primary") Список викладачів
+                    //- v-card-text(v-html="teacher.content.rendered")
+
+            v-flex(xs12 md12 v-if="methodic")
+                v-card.card-block
+                    v-card-title.justify-center {{ methodic.title }}
+                    v-card-text(v-html="methodic.опис")
+
+            v-flex(xs12 md12 v-if="prizes")
+                v-card.card-block
+                    v-card-title.justify-center {{ prizes.title }}
+                    v-card-text(v-html="prizes.descr")
+
+
+            v-flex(xs12 md6 v-if="thesis")
+                v-card.card-block
+                    v-card-title.justify-center {{ thesis.title }}
+                    v-card-text(v-html="thesis.опис")
+
+            
+               
                             
                             
 
 
 </template>
+
+<script>
+export default {
+    data: () => ({
+        page: null,
+        history: null,
+        collaboration: null,
+        partners: null,
+        thesis: null,
+        methodic: null,
+        prizes: null,
+        teachers: null,
+        
+    }),
+
+    computed: {
+        
+    },
+    async mounted() {
+        let data = await this.$store.dispatch('getPage', "about");
+        this.history = data.acf.history;
+        this.collaboration = data.acf.collaboration;
+        this.thesis = data.acf.thesis;
+        this.methodic = data.acf.methodic;
+        this.prizes = data.acf.prizes
+        this.page = data;
+        let teachers = await this.$store.dispatch("getPostsByCategory", "teachers");
+        this.teachers= this.setTeacherByHierarchy(teachers);
+    },
+
+    methods: {
+        setTeacherByHierarchy(teacherList) {
+            let director = teacherList.filter(teacher => {
+               if(teacher.pure_taxonomies.categories.some( item => item.category_nicename == "director"))
+                return teacher;
+            })
+            let professors = teacherList.filter(teacher => {
+               if(teacher.pure_taxonomies.categories.some( item => item.category_nicename == "professor"))
+                return teacher;
+            })
+            return [...director,...professors];
+        }
+    }
+}
+</script>
 
 <style lang="scss">
 @import "../assets/style/variables";
@@ -129,7 +156,7 @@ div
         transition: all .3s;
         &:hover{
             color: $primary;
-            & > img {
+            & > img {   
                 filter: grayscale(0%);
             }
         } 

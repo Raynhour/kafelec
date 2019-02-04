@@ -2,6 +2,10 @@
 
 @import "./card";
 
+.aligncenter {
+    text-align: center;
+}
+
 .title-main {
     margin-top: 20px;
     font-size: $title;
@@ -25,6 +29,12 @@
     }
 }
 
+.img-responsive{
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+}
+
 .app-tabs {
     font-size: 16px;
     font-weight: 400;
@@ -40,5 +50,18 @@
     }
     & .v-tabs__slider {
         height: 5px;
+    }
+}
+
+.teacher {
+    & .v-card__title {
+        font-weight: 700;
+        font-size: 15px;
+    }
+    &:hover {
+        & .v-card__title {
+            color: $primary;
+        }
+        
     }
 }

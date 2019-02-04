@@ -11,6 +11,11 @@
         text-transform: uppercase;
         text-align: center;
     }
+    &-subtitle {
+        font-size: $card-title_small;
+        text-align: center;
+        color:$primary;
+    }
     &-box {
         opacity: 0;
         top: 0;
@@ -93,6 +98,20 @@
             font-weight: bold;
             color: $primary;
             font-size: $card-title_small;
+        }
+
+        &__thumbnail {
+            max-height: 45vh;
+        }
+
+        &__teacher {
+            display: flex;
+            justify-content: center;
+            &-img {
+                max-height: 300px;
+                height: auto;
+                
+            }
         }
     }
 

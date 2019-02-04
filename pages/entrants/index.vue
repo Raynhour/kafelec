@@ -17,39 +17,29 @@ div
             )
     v-container
 
-        v-card.card-block
-            v-card-title.justify-center Умови вступу
+        v-card.card-block(v-for="block, i in page" :key="i")
+            v-card-title.justify-center {{ block.title }}
             v-card-text
                 v-layout
+                    v-flex(xs6 v-html="block.descr")
                     v-flex(xs6)
-                        p Кафедра електроніки має 50-річні традиції та досвід роботи, поєднані з сучасними досягненнями в галузі комп’ютерної техніки і програмування, мікро- та наноелектроніки, біомедичної електроніки, інформаційних мікро- електронних систем, автомобільної та авіаційної електроніки.
-                        p 
-                            b Є можливість навчання англійською мовою.
-                        p Активно працює студентське конструкторське бюро. Лабораторії з мультимедійною технікою, електронними стендами, Інтернет, сучасною вимірювальною технікою фірми Rohde&Schwarz.
-                        p Сталі зв’язки з профільними підприємствами та філіали кафедри на підприємствах. Творчі зв’язки і обмін студентами з університетами Німеччини, Польщі, Нідерландів, Франції, Великої Британії, Іспанії, Ірландії, Чехії, Туреччині, Угорщині.
-                        p Аспірантура. Плідна наукова-дослідна робота. Визнані у світі результати. Міжнародні конференції і стажування закордоном.
-                        p Іногородні студенти забезпечуються гуртожитком. Фінансування навчання – за рахунок коштів держбюджету або юридичних та фізичних осіб.
-                        p 
-                            i Є можливість отримати звання офіцера запасу.
-                        p Паралельно з базовою освітою – отримати другу вищу освіту (менеджмент, маркетинг, фінанси, юриспруденція, аудит тощо).
-                        p Більше інформації з умовами вступу в 2018 році Ви можете ознайомитись 
-                            a(href="http://nau.edu.ua/ua/menu/ab%D1%96tur%D1%96%D1%94ntu/pravila-pruyomu-2018/") 
-                                b ТУТ
-                    v-flex(xs6)
-                        v-img.card-block__img(src="http://test2.kafelec.nau.edu.ua/wp-content/uploads/2017/02/prijmalna_komisija.jpg")
-
-
-        v-card.card-block
-            v-card-title.justify-center Про нас
+                        v-img.card-block__img(:src="block.img.url")
+        
+        v-card.card-block   
+            v-card-title.justify-center Презинтація кафедри
             v-card-text
-                v-layout
-                    v-flex(xs6)
-                        p Усі найбільш видатні досягнення в галузі обчислювальної техніки і радіоелектроніки сьогодні пов’язані з розвитком мікроелектроніки. Мікропроцесори і персональні комп’ютери, роботи і апаратура космічного зв’язку, відеотехніка та інтелектуальні системи управління – все це створюється фахівцями в області мікроелектроніки на основі сучасних інтегральних мікросхем.
-                        p Тому випускники кафедри успішно працюють не тільки в галузі створення й обслуговування сучасного біомедичного обладнання і електронних систем усілякого призначення (включаючи автомобільну, авіаційну і банківську електроніку), але й комп’ютеризованих систем управління, контрольно-вимірювальної апаратури, телекомунікаційного устаткування, криптографії й захисту інформації, мереж зв’язку і передачі даних на базі сучасних мікропроцесорів, мікроконтролерів, програмованих інтегральних мікросхем.
-                        p Ознайомтесь з 
-                            a(href="http://kafelec.nau.edu.ua/Materialu/Buklet-site_2016-17v7.pdf" target="_blank") 
-                                b Інформіційним буклетом
-                    v-flex(xs-6)
-                        v-img.card-block__img(src="http://test2.kafelec.nau.edu.ua/wp-content/uploads/2018/03/22448609_945551162262640_5263439708566935434_n.jpg")
-
+                <iframe src="//www.slideshare.net/slideshow/embed_code/key/4nHU0dv1ZoLQEl" width="100%"  height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/ssuseref541b1/electronics-department2014" title="Electronics department2014" target="_blank">Electronics department2014</a> </strong> from <strong><a href="https://www.slideshare.net/ssuseref541b1" target="_blank">Андрей Миколушко</a></strong> </div>
+        
 </template>
+
+<script>
+export default {
+    data: () => ({
+        page: null
+    }),
+    async asyncData({store}) {
+        let { acf } = await store.dispatch('getPage', "entrants");
+        return {page: acf};
+    }
+}
+</script>
